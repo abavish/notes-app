@@ -1,0 +1,22 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "A node js application which accesses external files to maintain updated list of notes.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abavish/notes-app.git"
+  },
+  "author": "Vishal Nand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abavish/notes-app/issues"
+  },
+  "homepage": "https://github.com/abavish/notes-app#readme",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
