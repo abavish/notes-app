@@ -23,10 +23,23 @@ else if(command == 'list'){
   notes.getAll()
 }
 else if(command == 'remove'){
-  notes.removeNote(argv.title)
+  var noteRemoved = notes.removeNote(argv.title)
+  var message = noteRemoved ? 'Note removed successfully' : 'Note does not exist'
+  console.log(message);
+
+
 }
 else if(command == 'read'){
-  notes.getNote(argv.title)
+  var note = notes.getNote(argv.title)
+  // console.log(note.length);
+  if(note){
+    console.log('Note Found!');
+    console.log(`Title: ${note[0].title}`);
+    console.log(`Body: ${note[0].body}`);
+  }
+  else{
+    console.log('Note with this title does not exist');
+  }
 }
 else{
   console.log('Command not recognized');
