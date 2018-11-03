@@ -16,7 +16,7 @@ if(command == 'add'){
     console.log(`Note with the same title already exists.`);
   }
   else{
-    console.log(`Note has been created with title: ${argv.title} and body: ${argv.body}`);
+    notes.logNote(note)
   }
 }
 else if(command == 'list'){
@@ -34,8 +34,7 @@ else if(command == 'read'){
   // console.log(note.length);
   if(note){
     console.log('Note Found!');
-    console.log(`Title: ${note[0].title}`);
-    console.log(`Body: ${note[0].body}`);
+    notes.logNote(note)
   }
   else{
     console.log('Note with this title does not exist');
