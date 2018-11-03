@@ -5,10 +5,32 @@ const yargs = require('yargs')
 
 const notes = require('./notes')
 
-const argv = yargs.argv
+const titleOptions = {
+  describe: 'Title of the note',
+  demand: true,
+  alias: 't'
+}
+const bodyOptions = {
+  describe: 'Body of the note',
+  demand: true,
+  alias: 'b'
+}
+//command name, command description, command options object
+const argv = yargs
+  .command('add', 'Add a new note', {
+    title: titleOptions,
+    body: bodyOptions
+  })
+  .command('list', 'List all nodes')
+  .command('read', 'Read a note', {
+    title: titleOptions
+  })
+  .command('remove', 'Removes a note',{
+    title: titleOptions
+  })
+  .help()
+  .argv
 var command = argv._[0]
-console.log(`command executed: ${command}`)
-console.log('Yargs: ', argv);
 
 if(command == 'add'){
   var note = notes.addNote(argv.title, argv.body)
@@ -16,11 +38,14 @@ if(command == 'add'){
     console.log(`Note with the same title already exists.`);
   }
   else{
+    console.log(('Note created'));
     notes.logNote(note)
   }
 }
 else if(command == 'list'){
-  notes.getAll()
+  var allNotes = notes.getAll()
+  console.log(`Printing ${allNotes.length} note(s).`);
+  allNotes.forEach((note) => notes.logNote(note))
 }
 else if(command == 'remove'){
   var noteRemoved = notes.removeNote(argv.title)
