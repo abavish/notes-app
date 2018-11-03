@@ -11,7 +11,13 @@ console.log(`command executed: ${command}`)
 console.log('Yargs: ', argv);
 
 if(command == 'add'){
-  notes.addNote(argv.title, argv.body)
+  var note = notes.addNote(argv.title, argv.body)
+  if(note === undefined){
+    console.log(`Note with the same title already exists.`);
+  }
+  else{
+    console.log(`Note has been created with title: ${argv.title} and body: ${argv.body}`);
+  }
 }
 else if(command == 'list'){
   notes.getAll()
